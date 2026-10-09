@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { company } from '../../data/company';
+---
+<Base title={`Adatvédelem – ${company.name}`} description="Adatkezelési tájékoztató" solidHeader>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Adatvédelem</span>
+      <h1>Adatkezelési tájékoztató</h1>
+      <p>Röviden arról, hogyan kezeljük az Ön adatait.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container prose">
+      <h2 style="margin-top:0">Adatkezelő</h2>
+      <p>{company.legalName}, {company.seat} · {company.email} · {company.phone}</p>
+      <h2>Ajánlatkérés</h2>
+      <p>
+        Az ajánlatkérő űrlap nem tárol adatot a weboldalon: a kitöltött adatokból az Ön levelezőprogramja készít e-mailt.
+        Az e-mailben megadott adatokat kizárólag az ajánlat elkészítéséhez és a kapcsolattartáshoz használjuk.
+      </p>
+      <h2>Sütik és külső szolgáltatások</h2>
+      <p>
+        A weboldal nem használ követő sütiket. A Google Maps térkép csak akkor töltődik be, ha Ön a „Térkép megjelenítése”
+        gombra kattint; ekkor a Google adatkezelési szabályai érvényesek.
+      </p>
+      <p style="color:var(--steel-500);font-size:.92rem">Ez a szöveg a bemutató oldal része, élesítés előtt jogi ellenőrzést igényel.</p>
+    </div>
+  </section>
+</Base>

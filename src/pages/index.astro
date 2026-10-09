@@ -1,0 +1,350 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/company';
+import { machines, categories } from '../data/machines';
+import plant from '../assets/uzem.jpg';
+
+const services = [
+  {
+    icon: 'mill',
+    title: 'CNC marás',
+    text: '3, 4 és 5 tengelyes megmunkálás Hurco és Brother megmunkálóközpontokon, akár 760 × 510 × 610 mm munkatérrel.',
+  },
+  {
+    icon: 'lathe',
+    title: 'CNC esztergálás',
+    text: 'Okuma Genos CNC eszterga hajtott szerszámokkal: esztergálás és marás egy felfogásban.',
+  },
+  {
+    icon: 'spark',
+    title: 'Huzalszikra-forgácsolás',
+    text: 'Fanuc Robocut gépünkkel bonyolult kontúrok és edzett anyagok nagy pontosságú vágása.',
+  },
+  {
+    icon: 'gear',
+    title: 'Hagyományos forgácsolás',
+    text: 'Egyetemes esztergák Ø500 × 1500 mm-ig és egyetemes marógép egyedi, nagyobb méretű darabokhoz.',
+  },
+  {
+    icon: 'thread',
+    title: 'Menethengerlés',
+    text: 'Erős, forgácsmentesen kialakított menetek M3 és M12 között.',
+  },
+  {
+    icon: 'layers',
+    title: 'Kiegészítő műveletek',
+    text: 'Anyagdarabolás szalagfűrésszel, sorjázás és felületsimítás vibrációs csiszológéppel.',
+  },
+];
+
+const references = [
+  { name: 'Bosch Packaging Systems Kft.', note: 'Csomagolástechnika' },
+  { name: 'Robert Bosch A.S. Kft.', note: 'Járműipari beszállító' },
+  { name: 'Sanatmetal Kft.', note: 'Orvostechnikai eszközök' },
+];
+
+const usedCategories = Object.entries(categories);
+---
+<Base>
+  <!-- Hero -->
+  <section class="hero">
+    <Image
+      class="hero-img"
+      src={plant}
+      alt="A SEBI Kft. egri üzemcsarnoka a Meder utcában"
+      widths={[800, 1400, 2000, 2800]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      quality={78}
+    />
+    <div class="container">
+      <span class="eyebrow">Eger · CNC megmunkálás</span>
+      <h1>Egyedi alkatrészek. Precízen, határidőre.</h1>
+      <p class="hero-lead">
+        Egyedi és kisszériás szerszám- és alkatrészgyártás CNC-technológiával, a műszaki rajztól a kész darabig.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#kapcsolat">Ajánlatot kérek <Icon name="arrow" size={18} /></a>
+        <a class="btn btn-ghost" href="#geppark">Gépparkunk</a>
+      </div>
+
+      <div class="hero-facts">
+        <div class="hero-fact"><strong>13</strong><span>gép a gépparkban</span></div>
+        <div class="hero-fact"><strong>5 tengely</strong><span>CNC megmunkálás</span></div>
+        <div class="hero-fact"><strong>Ø500 × 1500</strong><span>mm esztergálási méret</span></div>
+        <div class="hero-fact"><strong>155 M Ft</strong><span>fejlesztés 2023-ban</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section-white" id="rolunk">
+    <div class="container about-grid">
+      <div class="about-img reveal">
+        <Image src={plant} alt="Az üzemcsarnok bejárata" widths={[600, 1000, 1400]} sizes="(max-width: 860px) 100vw, 50vw" quality={78} />
+        <div class="about-badge">
+          <strong>Megújult üzem</strong>
+          Bővített gyártócsarnok, új CNC gépek és napelemes energiaellátás.
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Rólunk</span>
+        <h2>Megbízható partner egyedi és kisszériás gyártáshoz</h2>
+        <p>
+          A {company.name} Egerben gyárt szerszámokat és alkatrészeket ipari partnerei számára. Erősségünk az egyedi és
+          kisszériás munka: legyen szó egyetlen prototípusról vagy rendszeresen ismétlődő sorozatról, a műszaki rajztól a
+          kész, ellenőrzött darabig mindent házon belül végzünk.
+        </p>
+        <p>
+          Modern CNC megmunkálóközpontjainkkal, esztergáinkkal és huzalszikra-forgácsoló gépünkkel a marástól a
+          menethengerlésig széles technológiai kört fedünk le, így egy helyen készülhet el az alkatrész teljes megmunkálása.
+        </p>
+        <ul class="check-list">
+          <li><Icon name="check" size={20} /> Egyedi darabok, prototípusok és kissorozatok</li>
+          <li><Icon name="check" size={20} /> Több technológia egy helyen, egy kapcsolattartóval</li>
+          <li><Icon name="check" size={20} /> Neves ipari partnerek, köztük Bosch-vállalatok</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="szolgaltatasok">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Szolgáltatások</span>
+        <h2>Amit gyártani tudunk Önnek</h2>
+        <p>Fém alkatrészek és szerszámok forgácsolása, a megrendelő rajza vagy mintája alapján.</p>
+      </div>
+      <div class="cards">
+        {
+          services.map((s) => (
+            <article class="card reveal">
+              <div class="card-icon"><Icon name={s.icon} size={26} /></div>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <h3>Ajánlatkérés</h3>
+          <p>Küldje el a rajzot vagy a mintadarabot, a darabszámot és a kívánt határidőt.</p>
+        </div>
+        <div class="step reveal">
+          <h3>Gyártás</h3>
+          <p>A megfelelő technológiával, saját gépparkunkon gyártjuk le az alkatrészeket.</p>
+        </div>
+        <div class="step reveal">
+          <h3>Átadás</h3>
+          <p>A kész darabokat ellenőrizve, a megbeszélt határidőre adjuk át.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Machines -->
+  <section class="section section-dark" id="geppark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Technikai háttér</span>
+        <h2>Gépparkunk</h2>
+        <p>Tizenhárom gép a CNC megmunkálóközpontoktól a menethengerlésig.</p>
+      </div>
+      <div class="filter" role="group" aria-label="Szűrés technológia szerint" data-filter>
+        <button type="button" aria-pressed="true" data-cat="all">Összes</button>
+        {usedCategories.map(([key, label]) => <button type="button" aria-pressed="false" data-cat={key}>{label}</button>)}
+      </div>
+      <div class="machine-grid">
+        {
+          machines.map((m) => (
+            <article class="machine" data-cat={m.category}>
+              <span class="machine-type">{m.type}</span>
+              <span class="machine-name">{[m.make, m.model].filter(Boolean).join(' ') || m.type}</span>
+              {m.note && <span class="machine-note">{m.note}</span>}
+              <dl>
+                {m.capacity && (
+                  <>
+                    <dt>Méret</dt>
+                    <dd>{m.capacity}</dd>
+                  </>
+                )}
+                {m.year && (
+                  <>
+                    <dt>Gyártási év</dt>
+                    <dd>{m.year}</dd>
+                  </>
+                )}
+              </dl>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- References -->
+  <section class="section section-white" id="referenciak">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Referenciák</span>
+        <h2>Akik már ránk bízták a gyártást</h2>
+      </div>
+      <div class="refs">
+        {
+          references.map((r) => (
+            <div class="ref reveal">
+              <strong>{r.name}</strong>
+              <span>{r.note}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="galeria">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Galéria</span>
+        <h2>Üzemünk és termékeink</h2>
+      </div>
+      <div class="gallery reveal">
+        <figure>
+          <Image src={plant} alt="A SEBI Kft. üzemcsarnoka" widths={[700, 1200, 1600]} sizes="(max-width: 760px) 100vw, 66vw" quality={78} />
+          <figcaption>Üzemcsarnok, Eger, Meder u. 26.</figcaption>
+        </figure>
+        <div class="gallery-side">
+          <div class="gallery-placeholder">Helyőrző: ide kerülnek a termékfotók</div>
+          <div class="gallery-placeholder">Helyőrző: ide kerülnek a gépparkról készült képek</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-dark" id="kapcsolat">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Kapcsolat</span>
+        <h2>Kérjen ajánlatot</h2>
+        <p>Írja le, mire van szüksége, és rövid időn belül jelentkezünk.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-list">
+            <a class="contact-item" href={company.phoneHref}>
+              <Icon name="phone" />
+              <span><small>Telefon</small><strong>{company.phone}</strong></span>
+            </a>
+            <a class="contact-item" href={`mailto:${company.email}`}>
+              <Icon name="mail" />
+              <span><small>E-mail</small><strong>{company.email}</strong></span>
+            </a>
+            <div class="contact-item">
+              <Icon name="pin" />
+              <span><small>Telephely és szállítási cím</small><strong>{company.site}</strong></span>
+            </div>
+            <div class="contact-item">
+              <Icon name="building" />
+              <span><small>Kapcsolattartó</small><strong>{company.contactPerson}</strong>, {company.contactRole}</span>
+            </div>
+          </div>
+          <dl class="company-data">
+            <dt>Cégnév</dt><dd>{company.legalName}</dd>
+            <dt>Székhely</dt><dd>{company.seat}</dd>
+            <dt>Adószám</dt><dd>{company.taxNumber}</dd>
+            <dt>Cégjegyzékszám</dt><dd>{company.registrationNumber}</dd>
+            <dt>Bankszámlaszám</dt><dd>{company.bankAccount}</dd>
+            <dt>Fax</dt><dd>{company.fax}</dd>
+          </dl>
+        </div>
+
+        <form class="form reveal" data-quote-form>
+          <h3>Ajánlatkérés</h3>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Név</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="company">Cég</label>
+              <input id="company" name="company" autocomplete="organization" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="phone">Telefon</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Mire van szüksége?</label>
+            <textarea id="message" name="message" placeholder="Alkatrész, anyag, darabszám, határidő…" required></textarea>
+          </div>
+          <p class="form-note">
+            Az Elküld gomb megnyitja levelezőprogramját a kitöltött üzenettel. A rajzokat a levélhez csatolhatja.
+          </p>
+          <button class="btn btn-dark" type="submit">Elküld <Icon name="arrow" size={18} /></button>
+        </form>
+      </div>
+
+      <div class="map reveal" data-map>
+        <div class="map-consent">
+          <div>
+            <button class="btn btn-primary" type="button" data-map-load><Icon name="pin" size={18} /> Térkép megjelenítése</button>
+            <p>A térkép a Google Maps szolgáltatásból töltődik be, ezért csak a gombra kattintva jelenítjük meg.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ email: company.email }}>
+  // Quote form: no backend, compose an e-mail in the visitor's mail client.
+  const form = document.querySelector('[data-quote-form]');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const body = [
+      `Név: ${d.get('name')}`,
+      `Cég: ${d.get('company') || '-'}`,
+      `E-mail: ${d.get('email')}`,
+      `Telefon: ${d.get('phone') || '-'}`,
+      '',
+      d.get('message'),
+    ].join('\n');
+    const subject = `Ajánlatkérés – ${d.get('company') || d.get('name')}`;
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  // Machine filter
+  const filter = document.querySelector('[data-filter]');
+  filter?.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-cat]');
+    if (!btn) return;
+    const cat = btn.dataset.cat;
+    filter.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    document.querySelectorAll('.machine').forEach((m) => {
+      m.hidden = cat !== 'all' && m.dataset.cat !== cat;
+    });
+  });
+
+  // Map loads only on request (no third-party requests by default)
+  document.querySelector('[data-map-load]')?.addEventListener('click', () => {
+    const map = document.querySelector('[data-map]');
+    map.innerHTML =
+      '<iframe title="SEBI Kft. térkép" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Eger,+Meder+u.+26&output=embed"></iframe>';
+  });
+</script>

@@ -1,0 +1,17 @@
+export const company = {
+  name: 'SEBI Kft.',
+  legalName: 'SEBI Ipari, Kereskedelmi, Szolgáltató Kft.',
+  tagline: 'Egyedi és kisszériás szerszám- és alkatrészgyártás CNC-technológiával',
+  contactPerson: 'Sebestyén Gábor',
+  contactRole: 'ügyvezető',
+  phone: '+36 36 416 909',
+  phoneHref: 'tel:+3636416909',
+  fax: '+36 36 515 768',
+  email: 'sebieger@sebikft.hu',
+  seat: '3300 Eger, István király u. 12.',
+  site: '3300 Eger, Meder u. 26.',
+  taxNumber: '11970426-2-10',
+  registrationNumber: '10-09-024045',
+  bankAccount: '11739009-20198194',
+  geo: { lat: 47.8719856, lng: 20.3921422 },
+};

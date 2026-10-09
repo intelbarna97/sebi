@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { company } from '../../data/company';
+
+const items = [
+  'CNC megmunkálóközpontok beszerzése, amelyekkel gyorsabbá és pontosabbá vált a gyártás, és több megrendelést tudunk vállalni.',
+  'Az „Elemér” CRM-rendszer beszerzése a meglévő és leendő ügyfeleinkkel való kapcsolattartás támogatására.',
+  'Tanácsadás a vállalati stratégia, a tervezési folyamatok, az üzleti terv, az üzleti modellezés, valamint a kockázatértékelés és -kezelés területén.',
+  'A gyártócsarnok bővítése, amely nagyobb kapacitást és biztonságosabb munkakörnyezetet teremt.',
+  'Napelemes rendszer beszerzése és telepítése a környezetbarát működés érdekében.',
+  'Munkatársaink képzése tapasztalt szakképző vállalkozás közreműködésével.',
+];
+---
+<Base title={`Pályázat – ${company.name}`} description="Széchenyi 2020 támogatással megvalósult fejlesztés a SEBI Kft.-nél." solidHeader>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Széchenyi 2020</span>
+      <h1>Modern üzleti és termelési kihívásokhoz való alkalmazkodás fejlesztése</h1>
+      <p>A {company.legalName} európai uniós és hazai támogatással megvalósult fejlesztése.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grant-facts">
+        <div class="grant-fact"><small>Kedvezményezett</small><strong style="font-size:1.05rem">{company.legalName}</strong></div>
+        <div class="grant-fact"><small>Szerződött támogatás</small><strong>155,34 millió Ft</strong></div>
+        <div class="grant-fact"><small>Projekt befejezése</small><strong>2023. 09. 19.</strong></div>
+      </div>
+
+      <div class="prose">
+        <h2 style="margin-top:0">A projekt tartalma</h2>
+        <ul class="check-list">
+          {items.map((i) => <li><Icon name="check" size={20} /> <span>{i}</span></li>)}
+        </ul>
+        <p style="margin-top:40px;color:var(--steel-500);font-size:.92rem">
+          A Széchenyi 2020 kötelező infóblokkja és logója a végleges oldalon a hivatalos arculati elemekkel jelenik meg.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
